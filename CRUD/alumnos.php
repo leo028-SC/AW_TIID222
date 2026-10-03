@@ -21,7 +21,9 @@ $query=mysqli_query($conn, $sql);
     <title>CRUD Alumnos</title>
 </head>
 <body>
-<table>
+    <div>
+<table border = "2">
+    <thead>
 <tr>
     <th>Matricula</th>
     <th>Nombre</th>
@@ -30,13 +32,34 @@ $query=mysqli_query($conn, $sql);
     <th>Edad</th>
     <th>Acciones</th>
 </tr>
+    </thead>
+    <tbody>
+        
+        <?php
+        while($row=mysqli_fetch_array($query)){
+        ?>
+        <tr>
+            <td><?php echo $row['matricula']?></td>
+            <td><?php echo $row['nombre']?></td>
+            <td><?php echo $row['apellido_p']?></td>
+            <td><?php echo $row['apellido_m']?></td>
+            <td><?php echo $row['edad']?></td>
+            <td>
+        </tr>
+        <?php
+        }
+        ?>
+    <tbody>
 <tr>
     <td>Alfreds Futterkiste</td>
     <td>Maria Anders</td>
     <td>Germany</td>
-    <td></td>
-    <td></td>
-    <td></td>
+    <td>jfdnf</td>
+    <td>fafew</td>
+    <td>
+        <button type="button">Editar</button>
+        <button type="button">Eliminar</button>
+    </td>
 </tr>
 <tr>
     <td>Centro comercial Moctezuma</td>
@@ -44,8 +67,27 @@ $query=mysqli_query($conn, $sql);
     <td>Mexico</td>
     <td></td>
     <td></td>
-    <td></td>
+    <td> 
+        <button type="button">Editar</button>
+        <button type="button">Eliminar</button>
+    </td>
+
 </tr>
+</tbody>
 </table>
+</div>
+<div>
+    <h1>Formulario</h1>
+    <div style = "display: flex; gap :10px;">
+    <form action="insertar.php" method="POST">
+        <input type="text" name="matricula" placeholder="Matricula">
+        <input type="text" name="nombre" placeholder="Nombre">
+        <input type="text" name="apellido_p" placeholder="Apellido_p">
+        <input type="text" name="apellido_m" placeholder="Apellido_m">
+        <input type="text" name="edad" placeholder="Edad">
+        <input type="submit" value="Enviar">
+    </div>
+    </form>
+</div>
 </body>
 </html>
