@@ -1,6 +1,6 @@
 <?php
 /* creacion de funcion llamada conectar*/ 
-/*Funcu¿ion -> Bloque de codigo que podemos mandar llamar cuando queramos */
+/*Funcuion -> Bloque de codigo que podemos mandar llamar cuando queramos */
 
 function conectar(){
     /*Infomacion del servidor */
