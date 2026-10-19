@@ -1,27 +1,27 @@
 <?php
-include ("Conexión.php");
+/* Conexión con la base de datos */
+include("Conexión.php");
 
+/* Crear la conexión */
+$conn = conectar();
 
-$conn=conectar();
+/* Recibir los datos del formulario */
+$marca  = $_POST['marca'];
+$modelo = $_POST['modelo'];
+$año    = $_POST['año'];
+$precio = $_POST['precio'];
 
+/* Insertar los datos coincidiendo con los nombres de la BD */
+$sql = "INSERT INTO carros (Marca, Modelo, Año, Precio) VALUES ('$marca', '$modelo', '$año', '$precio')";  
 
-$Marca = $_POST['Marca'];
-$Modelo = $_POST['Modelo'];         
-$Año = $_POST['Año'];
-$Precio = $_POST['Precio'];
-
-
-$sql = "INSERT INTO carros (marca, modelo, año, precio) VALUES ('$Marca', '$Modelo', '$Año', '$Precio')";  
-
-
+/* Ejecutar la consulta */
 $query = mysqli_query($conn, $sql);
 
-
+/* Comprobar redirección */
 if ($query) {
     header("Location: Examen.php");
+} else {
+    echo "Error al insertar el registro";
 }
-    else{
-        echo"Error al insertar el carro";
-    }
 
 ?>

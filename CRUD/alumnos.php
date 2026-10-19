@@ -22,7 +22,19 @@ $query=mysqli_query($conn, $sql);
 </head>
 <body>
     <div>
-<table border = "2">
+    <h1>Formulario</h1>
+    <div style = "display: flex; gap :10px;">
+    <form action="insertar.php" method="POST">
+        <input type="text" name="Matricula" placeholder="Matricula">
+        <input type="text" name="Nombre" placeholder="Nombre">
+        <input type="text" name="Apellido_p" placeholder="Apellido Paterno">
+        <input type="text" name="Apellido_m" placeholder="Apellido Materno">
+        <input type="text" name="Edad" placeholder="Edad">
+        <input type="submit" value="Enviar">
+    </form>
+    </div>
+    <div>
+<table border = "2" style = "border-collapse: collapse; margin-top: 20px; width: 100%;">
     <thead>
 <tr>
     <th>Matricula</th>
@@ -39,55 +51,23 @@ $query=mysqli_query($conn, $sql);
         while($row=mysqli_fetch_array($query)){
         ?>
         <tr>
-            <td><?php echo $row['matricula']?></td>
-            <td><?php echo $row['nombre']?></td>
-            <td><?php echo $row['apellido_p']?></td>
-            <td><?php echo $row['apellido_m']?></td>
-            <td><?php echo $row['edad']?></td>
+            <td><?php echo $row['Matricula']?></td>
+            <td><?php echo $row['Nombre']?></td>
+            <td><?php echo $row['Apellido_p']?></td>
+            <td><?php echo $row['Apellido_m']?></td>
+            <td><?php echo $row['Edad']?></td>
             <td>
+                <a href="editar.php?Matricula=<?php echo $row['Matricula']; ?>" style="background-color: #c3ffc5; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer;">Editar</a>
+                <a href="Delete.php?Matricula=<?php echo $row['Matricula']; ?>" style="background-color: #ffaea8; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer;">Eliminar</a>
+            </td>
         </tr>
         <?php
         }
         ?>
-    <tbody>
-<tr>
-    <td>Alfreds Futterkiste</td>
-    <td>Maria Anders</td>
-    <td>Germany</td>
-    <td>jfdnf</td>
-    <td>fafew</td>
-    <td>
-        <button type="button">Editar</button>
-        <button type="button">Eliminar</button>
-    </td>
-</tr>
-<tr>
-    <td>Centro comercial Moctezuma</td>
-    <td>Francisco Chang</td>
-    <td>Mexico</td>
-    <td></td>
-    <td></td>
-    <td> 
-        <button type="button">Editar</button>
-        <button type="button">Eliminar</button>
-    </td>
 
-</tr>
 </tbody>
 </table>
 </div>
-<div>
-    <h1>Formulario</h1>
-    <div style = "display: flex; gap :10px;">
-    <form action="insertar.php" method="POST">
-        <input type="text" name="matricula" placeholder="Matricula">
-        <input type="text" name="nombre" placeholder="Nombre">
-        <input type="text" name="apellido_p" placeholder="Apellido_p">
-        <input type="text" name="apellido_m" placeholder="Apellido_m">
-        <input type="text" name="edad" placeholder="Edad">
-        <input type="submit" value="Enviar">
-    </div>
-    </form>
 </div>
 </body>
 </html>

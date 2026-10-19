@@ -6,11 +6,11 @@ include ("Conexio.php");
 $conn=conectar();
 
 /* Recibir los datos del formulario */
-$matricula = $_POST['matricula'];
-$nombre = $_POST['nombre'];
-$apellidoPaterno = $_POST['apellido_p'];
-$apellidoMaterno = $_POST['apellido_m'];
-$edad = $_POST['edad'];
+$matricula = $_POST['Matricula'];
+$nombre = $_POST['Nombre'];
+$apellido_p = $_POST['Apellido_p'];
+$apellido_m = $_POST['Apellido_m'];
+$edad = $_POST['Edad'];
 
 /* Insertar los datos en la base de datos */
 $sql = "INSERT INTO alumnos (matricula, nombre, apellido_p, apellido_m, edad) VALUES ('$matricula', '$nombre', '$apellido_p', '$apellido_m', '$edad')";  

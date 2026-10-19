@@ -1,6 +1,6 @@
 <?php
 
-include("conexión.php");
+include("Conexión.php");
 
 $conn = conectar();
 
@@ -21,10 +21,12 @@ $query=mysqli_query($conn, $sql);
 <header style="background-color: #37474f; color: white; padding: 15px; text-align: center;">
     <h1>Examen 1er parcial - Aplicaciones web</h1>
 </header>
+
+<div style="display: flex; gap: 20px; margin-top: 20px; align-items: flex-start;">
 <div>
     <h1>Formulario</h1>
     <div>
-    <form style= "border: 1px solid #ccc; padding: 20px; border-radius: 5px; max-width: 200px;"action="insertar.php" method="POST">
+    <form style= "border: 1px solid #ccc; padding: 20px; border-radius: 5px; max-width: 200px;" action="insertar.php" method="POST">
     <label for="marca">Marca:</label>
     <input type="text" id="marca" name="marca">
     <label for="modelo">Modelo:</label>
@@ -34,12 +36,13 @@ $query=mysqli_query($conn, $sql);
     <label for="precio">Precio:</label>
     <input type="text" id="precio" name="precio">
     <input type="submit" value="Enviar">
+    </form>
+    </div>
 </div>
 
-</div>
-<div  style="margin-left: auto; margin-right: 0;">
+<div style="flex-grow: 1;">
 <h1>Tabla de Carros</h1>
-<table style="width: 100%; border-collapse: collapse; text-align: left; margin-left: auto; margin-right: 0;">
+<table style="width: 100%; border-collapse: collapse; text-align: left;">
 <thead>
     <tr style="background-color: #37474f; color: white;">
     <th style="padding: 8px; border: 1px solid #ddd;">ID</th>
@@ -55,17 +58,15 @@ $query=mysqli_query($conn, $sql);
         while($row=mysqli_fetch_array($query)){
         ?>
         <tr>
-            <td><?php echo $row['Marca']?></td>
-            <td><?php echo $row['Modelo']?></td>
-            <td><?php echo $row['Año']?></td>
-            <td><?php echo $row['Precio']?></td>
-            <td>
+            <td style="padding: 8px; border: 1px solid #ddd;"><?php echo $row['ID']?></td>
+            <td style="padding: 8px; border: 1px solid #ddd;"><?php echo $row['Marca']?></td>
+            <td style="padding: 8px; border: 1px solid #ddd;"><?php echo $row['Modelo']?></td>
+            <td style="padding: 8px; border: 1px solid #ddd;"><?php echo $row['Año']?></td>
+            <td style="padding: 8px; border: 1px solid #ddd;"><?php echo $row['Precio']?></td>
         </tr>
         <?php
         }
         ?>
-    <tbody>
-<tbody>
     <tr>
     <td style="padding: 8px; border: 1px solid #ddd;">1</td>
     <td style="padding: 8px; border: 1px solid #ddd;">Toyota</td>
@@ -76,6 +77,8 @@ $query=mysqli_query($conn, $sql);
 </tbody>
 </table>
 </div>
+</div>
+
 <a href="Creamos nuevo repositorio en GitHub.pdf" target="_blank">R1</a>
 <a href="introduccion a php.pdf" target="_blank">R2</a>
 <a href="R3.pdf" target="_blank">R3</a>
