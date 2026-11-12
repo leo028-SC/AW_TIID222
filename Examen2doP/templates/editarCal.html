@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Calificaciones</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+</head>
+<body class="bg-base-200 min-h-screen">
+    <div class="max-w-md mx-auto p-6">
+        <div class="card bg-base-100 shadow-md">
+            <div class="card-body">
+                <h1 class="card-title text-2xl justify-center mb-2">Calificación a editar</h1>
+
+                <form action="/actualizar/{{Calificacion.0}}" method="POST" class="flex flex-col gap-3">
+                    <input type="text" name="txtMatricula" value="{{Calificacion.1}}" class="input input-bordered w-full" required>
+                    <input type="text" name="txtNombre" value="{{Calificacion.2}}" class="input input-bordered w-full" required>
+                    <input type="text" name="txtMateria" value="{{Calificacion.3}}" class="input input-bordered w-full" required>
+                    <input type="number" name="txtCalificacion" value="{{Calificacion.4}}" class="input input-bordered w-full" required>
+
+                    <div class="flex gap-2 mt-2">
+                        <button type="submit" class="btn btn-primary flex-1">Actualizar</button>
+                        <a href="/" class="btn btn-ghost flex-1">Cancelar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

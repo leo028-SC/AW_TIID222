@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calificaciones</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+</head>
+
+<body class="bg-base-200 min-h-screen">
+
+    <div class="max-w-5xl mx-auto p-6">
+        <h1 class="text-3xl font-bold text-center mb-6">CALIFICACIONES</h1>
+
+        {% with mesajes= get_flashed_messages() %}
+        {% if mesajes %}
+        {% for msj in mesajes %}
+        <div role="alert">
+            <span>{{ msj }}</span>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        <div class="card bg-base-100 shadow-md mb-6">
+            <div class="card-body">
+                <form action="/guardar" method="POST" class="grid grid-cols-1 md:grid-cols-5 gap-3">
+                    <input type="text" name="txtMatricula" placeholder="Escribe la matrícula"
+                        class="input input-bordered w-full" required>
+                    <input type="text" name="txtNombre" placeholder="Escribe el nombre"
+                        class="input input-bordered w-full" required>
+                    <input type="text" name="txtMateria" placeholder="Escribe la materia"
+                        class="input input-bordered w-full" required>
+                    <input type="number" step="0.1" name="txtCalificacion" placeholder="Escribe la calificación"
+                        class="input input-bordered w-full" required>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </form>
+            </div>
+        </div>
+
+
+        <div class="card bg-base-100 shadow-md">
+            <div class="overflow-x-auto">
+                <table class="table table-zebra">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Matrícula</th>
+                            <th>Nombre</th>
+                            <th>Materia</th>
+                            <th>Calificación</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for cal in listCalificaciones %}
+                        <tr>
+                            <td>{{cal.0}}</td>
+                            <td>{{cal.1}}</td>
+                            <td>{{cal.2}}</td>
+                            <td>{{cal.3}}</td>
+                            <td>{{cal.4}}</td>
+                            <td class="flex gap-2">
+                                <a href="/editar/{{cal.0}}">Editar</a>
+                                <a href="/eliminar/{{cal.0}}" >Eliminar</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
